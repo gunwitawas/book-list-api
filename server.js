@@ -1,15 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const books = require('./src/routes/book');
 
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb://localhost:27017';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
+const routes = require('./src/route')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use('/books', books);
+app.use('/', routes());
 
 const port = 8080;
 

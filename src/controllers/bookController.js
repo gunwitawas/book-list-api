@@ -1,6 +1,7 @@
-var express = require('express');
+const bookSchema = require('../schema')
 
 exports.getBookList = (req, res) => {
+
     const bookList = [{
             imageUrl: '1',
             title: '11',
@@ -20,5 +21,12 @@ exports.getBookList = (req, res) => {
             description: '3333',
         }
     ];
-    res.send(bookList);
+    bookSchema.find({}).then((data) => {
+        console.log('data success', data);
+
+        res.send(data);
+    })
+
+
+    // res.send(bookList);
 };
