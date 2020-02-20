@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://localhost:27017';
+var mongoDB = 'mongodb://139.5.145.96:27017/bookdatabase';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

@@ -21,12 +21,10 @@ exports.getBookList = (req, res) => {
             description: '3333',
         }
     ];
-    bookSchema.find({}).then((data) => {
+    bookSchema.insertMany(bookList).then((data) => {
         console.log('data success', data);
 
         res.send(data);
     })
-
-
     // res.send(bookList);
 };
